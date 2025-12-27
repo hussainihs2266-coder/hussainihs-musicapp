@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pro Music App</title>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+</head>
+
+<body>
+
+  <div class="app">
+
+    <div class="top-row">
+      <h2>🎵 My Music Player</h2>
+
+      <!-- Theme toggle -->
+      <button id="theme-toggle">🌙</button>
+    </div>
+
+    <!-- SEARCH -->
+    <input id="search" type="text" placeholder="Search music..." />
+
+    <!-- Upload Songs -->
+    <label class="upload-btn">
+      ➕ Upload songs
+      <input id="upload" type="file" accept="audio/*" multiple hidden />
+    </label>
+
+    <div class="player">
+
+      <img id="cover" src="images/cover1.jpg" />
+
+      <h3 id="song-title">Select a song</h3>
+
+      <audio id="audio"></audio>
+
+      <div class="progress-container">
+        <span id="current-time">0:00</span>
+        <input type="range" id="progress" value="0" min="0" max="100" />
+        <span id="duration">0:00</span>
+      </div>
+
+      <div class="volume">
+        🔊 <input type="range" id="volume" min="0" max="1" step="0.01" value="1" />
+      </div>
+
+      <div class="controls">
+        <button id="shuffle">🔀</button>
+        <button id="prev">⏮</button>
+        <button id="play">▶️</button>
+        <button id="next">⏭</button>
+        <button id="repeat">🔁</button>
+      </div>
+    </div>
+
+    <ul id="playlist"></ul>
+  </div>
+
+  <script src="script.js"></script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
+    }
+  </script>
+
+</body>
+</html>
